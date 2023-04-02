@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import { useState } from "react";
+
+const App = () => {
+  const [journey, setJourney] = useState("");
+
+  const showJourney = () => {};
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <input
+          className="search-box"
+          type="text"
+          placeholder="Search for the station"
+        />
+      <div className="container">
+        <h1>City Bike App</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          <button>Show all journeys</button>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
