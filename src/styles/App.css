@@ -1,0 +1,32 @@
+.App {
+  font-family: fantasy;
+}
+
+h1 {
+  padding-top: 20px;
+}
+
+.container {
+  text-align: center;
+  flex-direction: column;
+  border: 5px solid red;
+  border-radius: 0.4em;
+  padding: 2rem;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 50%;
+  transform: translate(-50%);
+}
+
+.search-box {
+  position: absolute;
+  top: 8%;
+  right: 30px;
+  height: 25px;
+  font-size: 14px;
+  border-radius: 0.3em;
+  background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+}
