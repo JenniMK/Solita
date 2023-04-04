@@ -12,9 +12,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node index.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

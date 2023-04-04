@@ -1,7 +1,8 @@
 const stationsRouter = require("express").Router()
+const Station = require("../models/station")
 
 stationsRouter.get('/', (request, response) => {
-    Stations.find({}).then(stations => {
+    Station.find({}).then(stations => {
       response.json(stations)
     })
   })

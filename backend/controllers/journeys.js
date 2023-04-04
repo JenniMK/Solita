@@ -1,4 +1,5 @@
 const journeysRouter = require("express").Router();
+const Journey = require("../models/journey");
 
 journeysRouter.get('/', (request, response) => {
     Journey.find({}).then(journeys => {
