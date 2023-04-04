@@ -1,13 +1,7 @@
-const express = require('express')
-const app = express()
+const app = require('./app') // varsinainen Express-sovellus
+const config = require('./utils/config')
+const logger = require('./utils/logger')
 
-app.use(express.json())
-
-const PORT = 3001
-
-const connectDatabase = require('./database');
-connectDatabase();
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+app.listen(config.PORT, () => {
+  logger.info(`Server running on port ${config.PORT}`)
 })
