@@ -1,5 +1,6 @@
 const stationsRouter = require("express").Router()
 const Station = require("../models/station")
+const Journey = require("../models/journey")
 
 stationsRouter.get("/", (request, response) => {
     const page = parseInt(request.query.page) || 1;
@@ -15,16 +16,22 @@ stationsRouter.get("/", (request, response) => {
       });
   });
 
-stationsRouter.get("/:id", (request, response, next) => {
-    Station.findById(request.params.id)
-    .then(station => {
+stationsRouter.get("/:id", async (request, response, next) => {
+    try {
+        const station = await Station.findById(request.params.id)
         if (station) {
-            response.json(station)
+            const journeyStart = await Journey.countDocuments({ startStation: "Departure station id" })
+            const journeyEnd = await Journey.countDocuments({ endStation: "Return station id" })
+            response.json({
+            ...station.toObject(),
+            journeyStart,
+            journeyEnd,
+        })
         } else {
             response.status(404).end()
         }
-    })
-    .catch(error => next(error))
+    } catch (error) { 
+        next(error)
+}
 })
-
 module.exports = stationsRouter
