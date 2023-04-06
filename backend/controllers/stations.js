@@ -20,8 +20,8 @@ stationsRouter.get("/:id", async (request, response, next) => {
     try {
         const station = await Station.findById(request.params.id)
         if (station) {
-            const journeyStart = await Journey.countDocuments({ startStation: "Departure station id" })
-            const journeyEnd = await Journey.countDocuments({ endStation: "Return station id" })
+            const journeyStart = await Journey.countDocuments({ startStation: request.params.id })
+            const journeyEnd = await Journey.countDocuments({ endStation: request.params.id })
             response.json({
             ...station.toObject(),
             journeyStart,
