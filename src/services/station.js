@@ -1,8 +1,7 @@
 import axios from "axios";
+const baseUrl = "http://localhost:3001/api/stations"
 
-const baseUrl = "/api/stations"
-
-const getAll = async (page = 1, limit = 20) =>{
+const getAll = async (page = 1, limit = 15) =>{
     const request = await axios.get(baseUrl, {
         params: {
             page,
