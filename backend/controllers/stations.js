@@ -21,13 +21,13 @@ stationsRouter.get("/", (request, response) => {
       const station = await Station.findById(request.params.id);
       if (station) {
         const journeyStart = await Journey.aggregate([
-          { $match: { $expr: { $eq: ["$Departure station id", station.ID] } } },
-          { $count: "journeyStart" },
+          { $match: { "Departure station id": station.ID } },
+          { $group: { _id: null, journeyStart: { $sum: 1 } } },
         ]);
   
         const journeyEnd = await Journey.aggregate([
-          { $match: { $expr: { $eq: ["$Return station id", station.ID] } } },
-          { $count: "journeyEnd" },
+          { $match: { "Return station id": station.ID } },
+          { $group: { _id: null, journeyEnd: { $sum: 1 } } },
         ]);
   
         response.json({
