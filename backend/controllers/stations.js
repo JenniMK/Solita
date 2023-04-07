@@ -16,31 +16,16 @@ stationsRouter.get("/", (request, response) => {
       });
   });
 
-  stationsRouter.get("/:id", async (request, response, next) => {
-    try {
-      const station = await Station.findById(request.params.id);
-      if (station) {
-        const journeyStart = await Journey.aggregate([
-          { $match: { "Departure station id": station.ID } },
-          { $group: { _id: null, journeyStart: { $sum: 1 } } },
-        ]);
-  
-        const journeyEnd = await Journey.aggregate([
-          { $match: { "Return station id": station.ID } },
-          { $group: { _id: null, journeyEnd: { $sum: 1 } } },
-        ]);
-  
-        response.json({
-          ...station.toObject(),
-          journeyStart: journeyStart[0]?.journeyStart ?? 0,
-          journeyEnd: journeyEnd[0]?.journeyEnd ?? 0,
-        });
-      } else {
-        response.status(404).end();
-      }
-    } catch (error) {
-      next(error);
-    }
+  stationsRouter.get("/:id", (request, response, next) => {
+    Station.findById(request.params.id)
+      .then(station => {
+        if (station) {
+          response.json(station);
+        } else {
+          response.status(404).end();
+        }
+      })
+      .catch(error => next(error));
   });
 
 module.exports = stationsRouter
