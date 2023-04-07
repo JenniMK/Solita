@@ -1,6 +1,7 @@
 import React from "react";
 
-const SingleStation = ({ station }) => {
+const Station = ({ station }) => {
+  console.log(station);
   if (!station) {
     return <div>Loading...</div>;
   }
@@ -9,10 +10,10 @@ const SingleStation = ({ station }) => {
     <div>
       <h1>{station.Nimi}</h1>
       <p>{station.Osoite}</p>
-      <p>Total journeys starting from the station: {station.journeysStart}</p>
-      <p>Total journeys ending at the station: {station.journeysEnd}</p>
+      <p>Total journeys starting from the station: {station.journeyStart}</p>
+      <p>Total journeys ending at the station: {station.journeyEnd}</p>
     </div>
   );
 };
 
-export default SingleStation;
+export default Station;
