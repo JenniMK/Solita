@@ -1,5 +1,5 @@
 .App {
-  font-family: fantasy;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 h1 {
@@ -7,6 +7,7 @@ h1 {
 }
 
 .container {
+  font-size: medium;
   text-align: center;
   flex-direction: column;
   border: 5px solid red;
