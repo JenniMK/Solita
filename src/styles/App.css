@@ -9,10 +9,10 @@ h1 {
 .container {
   font-size: medium;
   text-align: center;
+  line-height: 0.5;
   flex-direction: column;
   border: 5px solid red;
   border-radius: 0.4em;
-  padding: 2rem;
   position: absolute;
   top: 20%;
   left: 50%;
