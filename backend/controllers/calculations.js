@@ -5,7 +5,7 @@ const Journey = require("../models/journey");
 calcsRouter.get("/", async (request, response, next) => {
   try {
     const page = parseInt(request.query.page) || 1;
-    const limit = parseInt(request.query.limit) || 15;
+    const limit = parseInt(request.query.limit) || 20;
     const skip = (page - 1) * limit;
 
     console.log('Aggregation query started:', new Date().toISOString());
