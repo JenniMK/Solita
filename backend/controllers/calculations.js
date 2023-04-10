@@ -12,6 +12,9 @@ calcsRouter.get("/", async (request, response, next) => {
     const stations = await Station.find({})
       .skip(skip)
       .limit(limit);
+    
+    const totalStations = await Station.countDocuments();
+    const totalPages = Math.ceil(totalStations / limit);
 
     const results = await Promise.all(
       stations.map(async (station) => {
@@ -33,10 +36,11 @@ calcsRouter.get("/", async (request, response, next) => {
       })
     );
     console.log('Aggregation query completed:', new Date().toISOString());
-    response.json(results);
+    response.json({ results, totalPages });
   } catch (error) {
     next(error);
   }
 });
+
 
 module.exports = calcsRouter;
