@@ -1,19 +1,26 @@
 import axios from "axios";
-const baseUrl = "http://localhost:3001/api/stations"
 
-const getAll = async (page = 1, limit = 15) =>{
-    const request = await axios.get(baseUrl, {
-        params: {
-            page,
-            limit,
-        },
-    })
-    return request.data
-}
+const baseUrl = "http://localhost:3001/api/stations";
+
+const getAll = async () => {
+  const response = await axios.get(baseUrl);
+  return response.data;
+};
 
 const getSingle = async (id) => {
-    const request = await axios.get(`${baseUrl}/${id}`);
-    return request.data;
-  };
+  const response = await axios.get(`${baseUrl}/${id}`);
+  return response.data;
+};
 
-export default { getAll, getSingle }
+const getPaginated = async (limit, page) => {
+  const response = await axios.get(`${baseUrl}?page=${page}&limit=${limit}`);
+  const stations = response.data;
+  
+  return {
+    stations: stations,
+  };
+};
+
+
+
+export default { getAll, getSingle, getPaginated };

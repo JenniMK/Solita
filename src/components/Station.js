@@ -1,15 +1,19 @@
 import { useState } from "react";
 
 const Station = ({ station, calcs }) => {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
   if (!station) {
     return <div>Loading...</div>;
   }
-
-  const calcData = calcs.find((calc) => calc.ID === station.ID) || {
-    journeyStart: 0,
-    journeyEnd: 0,
-  };
+  console.log('Calcs:', calcs); 
+  
+  const calcData =
+    Array.isArray(calcs) && calcs.find((calc) => calc.ID === station.ID)
+      ? calcs.find((calc) => calc.ID === station.ID)
+      : {
+          journeyStart: 0,
+          journeyEnd: 0,
+        };
 
   const toggleVisible = () => {
     setVisible(!visible);
