@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import "./styles/App.css";
 import Station from './components/Station';
-import Pagination from './components/Pagination';
+import StationPagination from './components/StationPagination';
 import Journey from './components/Journey';
 import stationsService from './services/station';
 import calculationsService from './services/calculation';
@@ -16,8 +16,8 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    fetchData(currentPage);
-  }, [currentPage]);
+    fetchData(currentStationPage);
+  }, [currentStationPage]);
 
   const fetchData = async (page) => {
     setLoading(true);
@@ -38,11 +38,11 @@ const App = () => {
   };
 
   const handleNextStationPage = () => {
-    setCurrentStationPage(currentPage + 1);
+    setCurrentStationPage(currentStationPage + 1);
   };
 
   const handlePrevStationPage = () => {
-    setCurrentStationPage(currentPage - 1);
+    setCurrentStationPage(currentStationPage - 1);
   };
 
   if (loading) return "Loading...";
@@ -56,10 +56,10 @@ return (
       {stations && calcs && stations.map((station) => (
         <Station key={station.id} station={station} calcs={calcs} />
       ))}
-      <Pagination
+      <StationPagination
         handlePrevStationPage={handlePrevStationPage}
         handleNextStationPage={handleNextStationPage}
-        currentPage={currentPage}
+        currentStationPage={currentStationPage}
         totalPages={totalPages}
       />
       <h2>Show journeys</h2>
