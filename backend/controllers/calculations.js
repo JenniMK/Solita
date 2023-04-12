@@ -2,11 +2,19 @@ const calcsRouter = require("express").Router();
 const Station = require("../models/station");
 const Journey = require("../models/journey");
 
+const cache = {};
+
 calcsRouter.get("/", async (request, response, next) => {
   try {
     const page = parseInt(request.query.page) || 1;
     const limit = parseInt(request.query.limit) || 20;
     const skip = (page - 1) * limit;
+    const cacheKey = `${page}-${limit}`;
+
+    if (cache[cacheKey]) {
+      console.log("Using cached data");
+      return response.json(cache[cacheKey]);
+    }
 
     console.log('Aggregation query started:', new Date().toISOString());
     const stations = await Station.find({})
@@ -29,18 +37,20 @@ calcsRouter.get("/", async (request, response, next) => {
         ]);
 
         return {
-          ...station.toObject(),
+          ID: station.ID,
           journeyStart: journeyStart[0]?.journeyStart ?? 0,
           journeyEnd: journeyEnd[0]?.journeyEnd ?? 0,
         };
       })
     );
     console.log('Aggregation query completed:', new Date().toISOString());
-    response.json({ results, totalPages });
+
+    const responseObject = { results, totalPages };
+    cache[cacheKey] = responseObject;
+    response.json(responseObject);
   } catch (error) {
     next(error);
   }
 });
-
 
 module.exports = calcsRouter;
