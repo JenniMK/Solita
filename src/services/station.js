@@ -21,6 +21,4 @@ const getPaginated = async (limit, page) => {
   };
 };
 
-
-
 export default { getAll, getSingle, getPaginated };

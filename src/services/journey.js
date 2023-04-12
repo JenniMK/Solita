@@ -1,14 +1,14 @@
-import axios from "axios"
-const baseUrl = "api/journeys"
+// journey.js
+import axios from "axios";
+const baseUrl = "http://localhost:3001/api/journeys";
 
-const getAll = async (page = 1, limit = 20) => {
-    const request = await axios.get(baseUrl, {
-        params: {
-            page,
-            limit
-        },
-    })
-    return request.data
-}
+const getPaginated = async (limit, page) => {
+  const response = await axios.get(`${baseUrl}?page=${page}&limit=${limit}`);
+  const journeys = response.data;
 
-export default { getAll }
+  return {
+    journeys: journeys,
+  };
+};
+
+export default { getPaginated };

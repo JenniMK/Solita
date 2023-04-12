@@ -1,54 +1,74 @@
-import { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useState, useEffect } from 'react';
 import "./styles/App.css";
 import Station from './components/Station';
 import Pagination from './components/Pagination';
+import Journey from './components/Journey';
 import stationsService from './services/station';
 import calculationsService from './services/calculation';
+import journeysService from "./services/journey"
 
-function App() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const limit = 15;
+const App = () => {
+  const [stations, setStations] = useState([]);
+  const [journeys, setJourneys] = useState([0])
+  const [calcs, setCalcs] = useState([]);
+  const [currentStationPage, setCurrentStationPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    fetchData(currentPage);
+  }, [currentPage]);
 
-  const stationsQuery = useQuery(
-    ['stations', currentPage], 
-    () => stationsService.getPaginated(limit, currentPage),
-    { keepPreviousData: true }
-  );
+  const fetchData = async (page) => {
+    setLoading(true);
+    const limit = 15;
 
-  const calculationsQuery = useQuery(
-    ['calculations', currentPage], 
-    () => calculationsService.getAll(limit, currentPage),
-    { keepPreviousData: true }
-  );
+    const stationsData = await stationsService.getPaginated(limit, page);
+    setStations(stationsData.stations);
+    console.log(stations)
 
-  const handleNextPage = () => {
-    setCurrentPage(currentPage + 1);
+    const calculationsData = await calculationsService.getAll(limit, page);
+    setCalcs(calculationsData.results);
+    setTotalPages(calculationsData.totalPages);
+
+    const journeysData = await journeysService.getPaginated(limit, page);
+    setJourneys(journeysData.journeys);
+
+    setLoading(false);
   };
 
-  const handlePrevPage = () => {
-    setCurrentPage(currentPage - 1);
+  const handleNextStationPage = () => {
+    setCurrentStationPage(currentPage + 1);
   };
 
-  if (stationsQuery.isLoading || calculationsQuery.isLoading) return "Loading...";
+  const handlePrevStationPage = () => {
+    setCurrentStationPage(currentPage - 1);
+  };
 
-  return (
-    <div className="App">
-      <div className="container">
-        <h1>City Bike App</h1>
-        <h2>Show stations</h2>
-        {stationsQuery.data?.stations && calculationsQuery.data?.results && stationsQuery.data.stations.map((station) => (
-          <Station key={station.id} station={station} calcs={calculationsQuery.data.results} />
-        ))}
-        <Pagination
-          handlePrevPage={handlePrevPage}
-          handleNextPage={handleNextPage}
-          currentPage={currentPage}
-          totalPages={calculationsQuery.data?.totalPages}
-        />
-      </div>
+  if (loading) return "Loading...";
+
+  // App.js
+return (
+  <div className="App">
+    <div className="container">
+      <h1>City Bike App</h1>
+      <h2>Show stations</h2>
+      {stations && calcs && stations.map((station) => (
+        <Station key={station.id} station={station} calcs={calcs} />
+      ))}
+      <Pagination
+        handlePrevStationPage={handlePrevStationPage}
+        handleNextStationPage={handleNextStationPage}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
+      <h2>Show journeys</h2>
+      {journeys && journeys.map((journey) => (
+        <Journey key={journey.id} journey={journey} />
+      ))}
+      
     </div>
-  );
-}
-
+  </div>
+);
+      }
 export default App;

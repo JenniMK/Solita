@@ -2,11 +2,11 @@ import { useState } from "react";
 
 const Station = ({ station, calcs }) => {
   const [visible, setVisible] = useState(false);
+
   if (!station) {
     return <div>Loading...</div>;
   }
-  console.log('Calcs:', calcs); 
-  
+
   const calcData =
     Array.isArray(calcs) && calcs.find((calc) => calc.ID === station.ID)
       ? calcs.find((calc) => calc.ID === station.ID)
