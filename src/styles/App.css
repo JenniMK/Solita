@@ -31,3 +31,18 @@ h1 {
   background-repeat: no-repeat;
   background-position: right center;
 }
+
+.Pagination {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.prevButton {
+  margin: 8px
+}
+
+.nextButton {
+  margin: 8px
+}
