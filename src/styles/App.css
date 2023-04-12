@@ -7,7 +7,7 @@ h1 {
 }
 
 .container {
-  font-size: medium;
+  font-size: small;
   text-align: center;
   line-height: 0.5;
   flex-direction: column;

@@ -3,7 +3,7 @@ const Journey = require("../models/journey");
 
 journeysRouter.get("/", (request, response) => {
   const page = parseInt(request.query.page) || 1;
-  const limit = parseInt(request.query.limit) || 20;
+  const limit = parseInt(request.query.limit) || 15;
 
   const skip = (page - 1) * limit;
 

@@ -8,7 +8,7 @@ import calculationsService from './services/calculation';
 
 function App() {
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 20;
+  const limit = 15;
 
   const stationsQuery = useQuery(
     ['stations', currentPage], 

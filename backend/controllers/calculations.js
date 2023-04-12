@@ -7,7 +7,7 @@ const cache = {};
 calcsRouter.get("/", async (request, response, next) => {
   try {
     const page = parseInt(request.query.page) || 1;
-    const limit = parseInt(request.query.limit) || 20;
+    const limit = parseInt(request.query.limit) || 15;
     const skip = (page - 1) * limit;
     const cacheKey = `${page}-${limit}`;
 
