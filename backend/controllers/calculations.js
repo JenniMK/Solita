@@ -22,7 +22,7 @@ calcsRouter.get("/", async (request, response, next) => {
       .limit(limit);
     
     const totalStations = await Station.countDocuments();
-    const totalPages = Math.ceil(totalStations / limit);
+    const totalStationPages = Math.ceil(totalStations / limit);
 
     const results = await Promise.all(
       stations.map(async (station) => {
@@ -45,7 +45,7 @@ calcsRouter.get("/", async (request, response, next) => {
     );
     console.log('Aggregation query completed:', new Date().toISOString());
 
-    const responseObject = { results, totalPages };
+    const responseObject = { results, totalStationPages };
     cache[cacheKey] = responseObject;
     response.json(responseObject);
   } catch (error) {

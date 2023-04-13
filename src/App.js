@@ -12,7 +12,10 @@ const App = () => {
   const [journeys, setJourneys] = useState([0])
   const [calcs, setCalcs] = useState([]);
   const [currentStationPage, setCurrentStationPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalStationPages, setTotalStationPages] = useState(1);
+  const [currentJourneyPage, setCurrentJourneyPage] = useState(1);
+  const [totalJourneyPages, setTotalJourneyPages] = useState(1);
+
   const [loading, setLoading] = useState(true);
   
   useEffect(() => {
@@ -29,7 +32,7 @@ const App = () => {
 
     const calculationsData = await calculationsService.getAll(limit, page);
     setCalcs(calculationsData.results);
-    setTotalPages(calculationsData.totalPages);
+    setTotalStationPages(calculationsData.totalStationPages);
 
     const journeysData = await journeysService.getPaginated(limit, page);
     setJourneys(journeysData.journeys);
@@ -60,7 +63,7 @@ return (
         handlePrevStationPage={handlePrevStationPage}
         handleNextStationPage={handleNextStationPage}
         currentStationPage={currentStationPage}
-        totalPages={totalPages}
+        totalStationPages={totalStationPages}
       />
       <h2>Show journeys</h2>
       {journeys && journeys.map((journey) => (
