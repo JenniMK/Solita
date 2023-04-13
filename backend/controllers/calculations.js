@@ -24,6 +24,10 @@ calcsRouter.get("/", async (request, response, next) => {
     const totalStations = await Station.countDocuments();
     const totalStationPages = Math.ceil(totalStations / limit);
 
+    // Calculate totalJourneys and totalJourneyPages outside the .map() function
+    const totalJourneys = await Journey.countDocuments();
+    const totalJourneyPages = Math.ceil(totalJourneys / limit);
+
     const results = await Promise.all(
       stations.map(async (station) => {
         const journeyStart = await Journey.aggregate([
@@ -45,7 +49,7 @@ calcsRouter.get("/", async (request, response, next) => {
     );
     console.log('Aggregation query completed:', new Date().toISOString());
 
-    const responseObject = { results, totalStationPages };
+    const responseObject = { results, totalStationPages, totalJourneyPages };
     cache[cacheKey] = responseObject;
     response.json(responseObject);
   } catch (error) {

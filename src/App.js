@@ -18,27 +18,41 @@ const App = () => {
 
   const [loading, setLoading] = useState(true);
   
-  useEffect(() => {
-    fetchData(currentStationPage);
-  }, [currentStationPage]);
-
-  const fetchData = async (page) => {
+  const fetchStationsData = async (page) => {
     setLoading(true);
     const limit = 15;
-
+  
     const stationsData = await stationsService.getPaginated(limit, page);
     setStations(stationsData.stations);
-    console.log(stations)
-
+  
     const calculationsData = await calculationsService.getAll(limit, page);
     setCalcs(calculationsData.results);
     setTotalStationPages(calculationsData.totalStationPages);
-
-    const journeysData = await journeysService.getPaginated(limit, page);
-    setJourneys(journeysData.journeys);
-
+    setTotalJourneyPages(calculationsData.totalJourneyPages);
+  
     setLoading(false);
   };
+  
+  
+  const fetchJourneysData = async (page) => {
+    setLoading(true);
+    const limit = 15;
+  
+    const journeysData = await journeysService.getPaginated(limit, page);
+    setJourneys(journeysData.journeys);
+  
+    setLoading(false);
+  };
+  
+  
+  useEffect(() => {
+    fetchStationsData(currentStationPage);
+  }, [currentStationPage]);
+
+  useEffect(() => {
+    fetchJourneysData(currentJourneyPage);
+  }, [currentJourneyPage]);
+
 
   const handleNextStationPage = () => {
     setCurrentStationPage(currentStationPage + 1);
