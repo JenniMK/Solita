@@ -7,8 +7,8 @@ const getAll = async () => {
   return response.data;
 };
 
-const getSingle = async (id) => {
-  const response = await axios.get(`${baseUrl}/${id}`);
+const searchStations = async (query) => {
+  const response = await axios.get("/api/stations/search", { params: { query } });
   return response.data;
 };
 
@@ -21,4 +21,7 @@ const getPaginated = async (limit, page) => {
   };
 };
 
-export default { getAll, getSingle, getPaginated };
+
+export default { getAll, getPaginated, searchStations };
+
+

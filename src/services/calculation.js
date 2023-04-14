@@ -16,4 +16,9 @@ const getAll = async (limit, page) => {
   };
 };
 
-export default { getAll };
+const getSingle = async (Nimi) => {
+  const response = await axios.get(`${baseUrl}/station/${Nimi}`);
+  return response.data;
+};
+
+export default { getAll, getSingle };

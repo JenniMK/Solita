@@ -16,6 +16,22 @@ stationsRouter.get("/", (request, response) => {
     .catch(error => next(error));
 });
 
+stationsRouter.get("/search", async (request, response, next) => {
+  const query = request.query.query;
+  if (!query) {
+    return response.status(400).json({ error: "Missing query parameter" });
+  }
+  try {
+    const stations = await Station.find({
+      Nimi: { $regex: query, $options: "i" },
+    });
+    response.json(stations);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
   stationsRouter.get("/:id", (request, response, next) => {
     Station.findById(request.params.id)
       .then(station => {
@@ -27,6 +43,24 @@ stationsRouter.get("/", (request, response) => {
       })
       .catch(error => next(error));
   });
+
+stationsRouter.get("/search", async (request, response, next) => {
+  const query = request.query.query;
+
+  if (!query) {
+    return response.status(400).json({ error: "Missing query parameter" });
+  }
+
+  try {
+    const stations = await Station.find({
+      Nimi: { $regex: query, $options: "i" },
+    });
+    response.json(stations);
+  } catch (error) {
+    next(error);
+  }
+});
+
 
 module.exports = stationsRouter
 

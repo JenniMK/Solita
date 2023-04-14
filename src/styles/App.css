@@ -14,17 +14,16 @@ h1 {
   border: 5px solid red;
   border-radius: 0.4em;
   position: absolute;
-  top: 20%;
+  top: 10%;
   left: 50%;
   width: 50%;
   transform: translate(-50%);
 }
 
 .search-box {
+  list-style-type: none;
+  padding: 5px;
   position: absolute;
-  top: 8%;
-  right: 30px;
-  height: 25px;
   font-size: 14px;
   border-radius: 0.3em;
   background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
@@ -39,10 +38,18 @@ h1 {
   transform: translateX(-50%);
 }
 
-.prevButton {
+.prevStaButton {
   margin: 8px
 }
 
-.nextButton {
+.nextStaButton {
+  margin: 8px
+}
+
+.prevJourButton {
+  margin: 8px
+}
+
+.nextJourButton {
   margin: 8px
 }
