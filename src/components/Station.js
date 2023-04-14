@@ -20,7 +20,7 @@ const Station = ({ station, calcs }) => {
   };
 
   return (
-    <div>
+    <div className="station">
       <h3 onClick={toggleVisible}>{station.Nimi}</h3>
       {visible && (
         <div>

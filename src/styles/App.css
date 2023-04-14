@@ -13,17 +13,16 @@ h1 {
   flex-direction: column;
   border: 5px solid red;
   border-radius: 0.4em;
-  position: absolute;
+  
   top: 10%;
-  left: 50%;
-  width: 50%;
-  transform: translate(-50%);
+  margin:auto;
+  width: 80%;
 }
 
 .search-box {
   list-style-type: none;
   padding: 5px;
-  position: absolute;
+  position: left;
   font-size: 14px;
   border-radius: 0.3em;
   background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
@@ -36,6 +35,11 @@ h1 {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.station {
+  position: left;
+  margin: 5px; 
 }
 
 .prevStaButton {

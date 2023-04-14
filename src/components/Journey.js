@@ -9,8 +9,8 @@ const Journey = ({ journey }) => {
   return (
     <div>
       <p>
-        From: {journey["Departure station name"]} to:{" "}
-        {journey["Return station name"]}, distance: {distanceKm} km, time:{" "}
+      <b>From:</b>{journey["Departure station name"]} <b>to:</b>{" "}
+        {journey["Return station name"]}, <b>distance:</b> {distanceKm} km, <b>time:</b>{" "}
         {durationMin} min
       </p>
     </div>
