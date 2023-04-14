@@ -1,5 +1,3 @@
-import React from "react";
-
 const Journey = ({ journey }) => {
   if (!journey) {
     return <div>Loading...</div>;
@@ -20,3 +18,4 @@ const Journey = ({ journey }) => {
 };
 
 export default Journey;
+
