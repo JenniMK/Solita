@@ -14,6 +14,8 @@ const stationSchema = new mongoose.Schema({
   Kapasiteet: { type: Number, required: false },
   x: { type: Number, required: true },
   y: { type: Number, required: true },
+  journeyStart: { type: Number, default: 0 },
+  journeyEnd: { type: Number, default: 0 },
 });
 
 stationSchema.index({ ID: 1, Nimi: 1, x: 1, y: 1 });
