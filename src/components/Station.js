@@ -1,19 +1,11 @@
 import { useState } from "react";
 
-const Station = ({ station, calcs }) => {
+const Station = ({ station }) => {
   const [visible, setVisible] = useState(false);
 
   if (!station) {
     return <div>Loading...</div>;
   }
-
-  const calcData =
-    Array.isArray(calcs) && calcs.find((calc) => calc.ID === station.ID)
-      ? calcs.find((calc) => calc.ID === station.ID)
-      : {
-          journeyStart: 0,
-          journeyEnd: 0,
-        };
 
   const toggleVisible = () => {
     setVisible(!visible);
@@ -25,8 +17,8 @@ const Station = ({ station, calcs }) => {
       {visible && (
         <div>
           <p>{station.Osoite}</p>
-          <p>Total journeys starting from the station: {calcData.journeyStart}</p>
-          <p>Total journeys ending at the station: {calcData.journeyEnd}</p>
+          <p>Total journeys starting from the station: {station.journeyStart}</p>
+          <p>Total journeys ending at the station: {station.journeyEnd}</p>
         </div>
       )}
     </div>

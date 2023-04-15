@@ -7,7 +7,6 @@ import Journey from "./components/Journey";
 import JourneyPagination from "./components/JourneyPagination";
 import StationSearch from "./components/StationSearch";
 import stationsService from "./services/station";
-import calculationsService from "./services/calculation";
 import journeysService from "./services/journey";
 
 const App = () => {
@@ -21,12 +20,6 @@ const App = () => {
   const stationsQuery = useQuery(
     ["stations", currentStationPage],
     () => stationsService.getPaginated(limit, currentStationPage),
-    { keepPreviousData: true }
-  );
-
-  const calculationsQuery = useQuery(
-    ["calculations", currentStationPage],
-    () => calculationsService.getAll(limit, currentStationPage),
     { keepPreviousData: true }
   );
 
@@ -76,14 +69,13 @@ const App = () => {
   };
   
 
-  if (stationsQuery.isLoading || calculationsQuery.isLoading || journeysQuery.isLoading)
+  if (stationsQuery.isLoading || journeysQuery.isLoading)
     return "Loading...";
 
-  const stations = stationsQuery.data?.stations || [];
-  const calcs = calculationsQuery.data?.results || [];
-  const journeys = journeysQuery.data?.journeys || [];
-  const totalStationPages = calculationsQuery.data?.totalStationPages || 1;
-  const totalJourneyPages = calculationsQuery.data?.totalJourneyPages || 1;
+  const stations = stationsQuery.data?.stations?.stations || [];
+  const journeys = journeysQuery.data?.journeys?.journeys || [];
+  const totalStationPages = stationsQuery.data?.stations?.totalStationPages || 1;
+  const totalJourneyPages = journeysQuery.data?.journeys?.totalJourneyPages || 1;
 
   
   return (
@@ -106,9 +98,8 @@ const App = () => {
           ))}
         <h2>Show stations</h2>
             {stations &&
-              calcs &&
               stations.map((station) => (
-                <Station key={station.id} station={station} calcs={calcs} />
+                <Station key={station.id} station={station} />
               ))}
             <StationPagination
               handlePrevStationPage={handlePrevStationPage}

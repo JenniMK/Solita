@@ -1,3 +1,5 @@
+import React from "react";
+
 const Journey = ({ journey }) => {
   if (!journey) {
     return <div>Loading...</div>;
