@@ -82,24 +82,23 @@ const App = () => {
     <div className="App">
       <div className="container">
         <h1>City Bike App</h1>
-        <input
-          type="text"
-          placeholder="Search for station"
-          value={stationSearch}
-          onChange={handleSearch}
-        />
-        {stationSearch &&
-          filteredStations.map((station) => (
-            <StationSearch
-  key={station.ID}
-  station={station}
-  onClick={() => handleStationClick(station)}
-/>
-))}
-          <div className="map-container">
-        <Map stations={stations} selectedStation={selectedStation} />
-      </div>
-        <h2>Show stations</h2>
+        <div className="main-content">
+          <div className="left-content">
+            <input
+              type="text"
+              placeholder="Search for station"
+              value={stationSearch}
+              onChange={handleSearch}
+            />
+            {stationSearch &&
+              filteredStations.map((station) => (
+                <StationSearch
+                  key={station.ID}
+                  station={station}
+                  onClick={() => handleStationClick(station)}
+                />
+              ))}
+            <h2>Show stations</h2>
             {stations &&
               stations.map((station) => (
                 <Station key={station.id} station={station} />
@@ -110,6 +109,11 @@ const App = () => {
               currentStationPage={currentStationPage}
               totalStationPages={totalStationPages}
             />
+          </div>
+          <div className="map-container">
+            <Map stations={stations} selectedStation={selectedStation} />
+          </div>
+        </div>
         <h2>Show journeys</h2>
         {journeys &&
           journeys.map((journey) => (

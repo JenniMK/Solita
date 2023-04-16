@@ -3,7 +3,7 @@ import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import "../styles/map.css"
 
 const containerStyle = {
-  width: '80%',
+  width: '100%',
   height: '80vh',
 };
 
@@ -12,18 +12,15 @@ const defaultCenter = {
   lng: 24.945831,
 };
 
-const defaultZoom = 12;
+const defaultZoom = 10;
 
 const Map = ({ stations, selectedStation }) => {
+    const icon = 'https://maps.google.com/mapfiles/ms/icons/green-dot.png';
+
     return (
       <LoadScript googleMapsApiKey="AIzaSyD3P4XzeXdt2Fb-LObPIBkIW1LAjmR1GCA">
         <GoogleMap mapContainerStyle={containerStyle} center={defaultCenter} zoom={defaultZoom}>
           {stations.map((station) => {
-            const isSelected = selectedStation && selectedStation.ID === station.ID;
-            const icon = isSelected
-              ? 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
-              : 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
-  
             return (
               <Marker
                 key={station.ID}
@@ -37,4 +34,4 @@ const Map = ({ stations, selectedStation }) => {
     );
   };
 
-  export default Map;
+export default Map;
