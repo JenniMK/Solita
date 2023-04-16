@@ -66,6 +66,12 @@ const App = () => {
   const handleStationClick = (selectedStation) => {
     setSelectedStation(selectedStation);
   };
+
+  const handleBackButtonClick = () => {
+    setSelectedStation(null);
+    setStationSearch("");
+    setFilteredStations([]);
+  };
   
   if (stationsQuery.isLoading || journeysQuery.isLoading)
     return "Loading...";
@@ -85,11 +91,15 @@ const App = () => {
         <div className="main-content">
           <div className="left-content">
             <input
+              className="search-box"
               type="text"
               placeholder="Search for station"
               value={stationSearch}
-              onChange={handleSearch}
+              onChange={handleSearch}  
             />
+            {selectedStation && (
+                <button className="back-button"onClick={handleBackButtonClick}>Back</button>
+              )}
             {stationSearch &&
               filteredStations.map((station) => (
                 <StationSearch

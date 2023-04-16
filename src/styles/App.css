@@ -4,7 +4,7 @@
 
 h1 {
   text-align: center;
-  padding-top: 20px;
+  padding: 20px;
 }
 
 .container {
@@ -32,6 +32,10 @@ h1 {
   background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
   background-repeat: no-repeat;
   background-position: right center;
+}
+
+.back-button {
+  margin-top: 10px;
 }
 
 .Pagination {
