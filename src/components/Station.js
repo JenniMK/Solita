@@ -17,8 +17,8 @@ const Station = ({ station }) => {
       {visible && (
         <div>
           <p>{station.Osoite}</p>
-          <p>Total journeys starting from the station: {station.journeyStart}</p>
-          <p>Total journeys ending at the station: {station.journeyEnd}</p>
+          <p><b>Total journeys starting from the station:</b> {station.journeyStart}</p>
+          <p><b>Total journeys ending at the station:</b> {station.journeyEnd}</p>
         </div>
       )}
     </div>

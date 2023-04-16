@@ -4,20 +4,20 @@
 
 h1 {
   text-align: center;
-  padding: 20px;
+  padding: 15px;
 }
 
 .container {
   font-size: small;
   text-align: left;
   line-height: 0.5;
-  display: flex; /* Add this line */
+  display: flex;
   flex-direction: column;
-  align-items: center; /* Add this line */
+  align-items: center;
   border: 5px solid red;
   border-radius: 0.4em;
   
-  top: 10%;
+  margin-top: 50px;
   margin: auto;
   width: 80%;
   padding: 40px;
@@ -26,6 +26,7 @@ h1 {
 .search-box {
   list-style-type: none;
   padding: 5px;
+  margin-bottom: 5px;
   position: left;
   font-size: 14px;
   border-radius: 0.3em;
@@ -71,7 +72,7 @@ h1 {
   align-items: flex-start;
   justify-content: flex-start;
   margin-bottom: 20px;
-  width: 100%; /* Add this line */
+  width: 100%;
 }
 
 .left-content {
@@ -79,7 +80,7 @@ h1 {
   flex-direction: column;
   align-items: flex-start;
   width: 300px;
-  margin-right: 20px; /* Add this line */
+  margin-right: 20px;
 }
 
 .map-container {
