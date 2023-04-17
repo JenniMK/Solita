@@ -12,7 +12,7 @@ In frontend also install first dependencies by running npm install. Then run npm
 
 <h2>Content of directories:</h2>
 
-Backend has two model files that create schemas for MongoDB database. Data directory has two import files for both schemas and additional update file that was used to add more data to database.
+Backend has two model files that create schemas for MongoDB database. Data directory has two import files for both schemas and additional update file that was used to add more data to database. Connection is created by using database.js file. Note that due to limit of space in MongoDB Atlas, imported lines of journey data has been limited to 500,000 per file. 
 
 There is also two controller files to handle API-endpoints. 
 
