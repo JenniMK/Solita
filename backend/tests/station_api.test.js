@@ -19,6 +19,7 @@ beforeEach(async () => {
   await Promise.all(savePromises);
 });
 
+describe('Stations API', () => {
 test('GET request returns paginated station data', async () => {
   const response = await api.get('/api/stations').expect(200);
 
@@ -43,3 +44,4 @@ test('GET /search handles missing query parameter', async () => {
 afterAll(() => {
   mongoose.connection.close();
 });
+})
