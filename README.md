@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+<h1>Citybikes application</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>Link to the production version:</h2>
 
-## Available Scripts
+This application was created using create-react-app.
 
-In the project directory, you can run:
+<h2>To start:</h2>
 
-### `npm start`
+Clone the repository and save the .env-file that was provided separately to the root of backend directory. Install all dependencies by running node index.js.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In frontend also install first dependencies by running npm install. Then run npm start in root.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<h2>Content of directories:</h2>
 
-### `npm test`
+Backend has two model files that create schemas for MongoDB database. Data directory has two import files for both schemas and additional update file that was used to add more data to database. Connection is created by using database.js file. Note that due to limit of space in MongoDB Atlas, imported lines of journey data has been limited to 500,000 per file. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+There is also two controller files to handle API-endpoints. 
 
-### `npm run build`
+In frontend I have two service files to fetch data from API-endopoints. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h2>Application's functionalities</h2>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In browser stations' data has been paginated to display 15 lines per page. Map on the right side shows the locations of currently displayed stations. User can click the name of the station to view station's address and amounts of total journeys. 
+In search box usesr can start typing the name of the station they want to find and it offers suitable names. By clicking the name, station's data will be displayed. Also pin on the map shows the location. Back button returns to the previous page.
+Below stations' data is paginated data of journeys. It has also been divided 15 lines per page. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h2>Further developments</h2>
 
-### `npm run eject`
+To apply more functionalities, I would widen the data that is calculated and fetched from stations and journeys, for example average distance and duration from each station. Journeys' data could have possibilities to sort distance and duration to ascending descending order. Also names could be sorted in alphabetical order. These would serve the service provider.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The map could show all the stations and use current location to show the closest station. This could be displayed below the map. This would be useful for the service user instead.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Since the provided data is in finnish and swedish, a flag icons could be added to the top of page and it could have option to choose languege. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<h2>Last words</h2>Overall, this is a very good assignment and has variety of options how to use the data. I will personally develop it further by adding more calculated data and trying to re-do it also with SQL. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
