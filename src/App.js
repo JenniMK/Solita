@@ -121,14 +121,20 @@ const App = () => {
             />
           </div>
           <div className="map-container">
-            <Map stations={stations} selectedStation={selectedStation} />
+          <Map
+  stations={stations}
+  selectedStation={selectedStation}
+  showAllPins={selectedStation === null}
+/>
           </div>
         </div>
         <h2>Show journeys</h2>
+        <div className="journeys">
         {journeys &&
-          journeys.map((journey) => (
-            <Journey key={journey.id} journey={journey} />
-          ))}
+        journeys.map((journey) => (
+        <Journey key={journey.id} journey={journey} />
+        ))}
+      </div>
         <JourneyPagination
           handlePrevJourneyPage={handlePrevJourneyPage}
           handleNextJourneyPage={handleNextJourneyPage}
