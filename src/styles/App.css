@@ -1,14 +1,20 @@
+body {
+  background-image: url("../images/biker.jpg");
+  background-size: cover;
+}
+
 .App {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: sans-serif;
 }
 
 h1 {
   text-align: center;
-  padding: 1px;
+  margin-bottom: 30px;
 }
 
 .container {
-  font-size: small;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: smaller;
   text-align: left;
   line-height: 0.5;
   display: flex;
@@ -16,7 +22,6 @@ h1 {
   align-items: center;
   border: 5px solid red;
   border-radius: 0.4em;
-  
   margin-top: 50px;
   margin: auto;
   width: 65%;
@@ -33,6 +38,10 @@ h1 {
   background-image: url(https://cdn2.hubspot.net/hubfs/4004166/bioticresearch_website_assets/images/search_icon.png);
   background-repeat: no-repeat;
   background-position: right center;
+}
+
+.map-container {
+  margin-top: 65px;
 }
 
 .back-button {

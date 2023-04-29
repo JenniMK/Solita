@@ -13,7 +13,6 @@ const defaultCenter = {
 
 const defaultZoom = 10;
 
-// In Map.js
 const Map = ({ stations, selectedStation, showAllPins }) => {
   const searchedStationId = selectedStation ? selectedStation.ID : null;
 
