@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const stationSchema = new mongoose.Schema({
   FID: { type: Number, required: true },
@@ -16,9 +16,9 @@ const stationSchema = new mongoose.Schema({
   y: { type: Number, required: true },
   journeyStart: { type: Number, default: 0 },
   journeyEnd: { type: Number, default: 0 },
-});
+})
 
-stationSchema.index({ ID: 1, Nimi: 1, x: 1, y: 1 });
+stationSchema.index({ ID: 1, Nimi: 1, x: 1, y: 1 })
 
 stationSchema.set('toJSON', {
   transform: (document, returnedObject) => {
@@ -26,6 +26,6 @@ stationSchema.set('toJSON', {
     delete returnedObject._id
     delete returnedObject.__v
   }
-});
+})
 
-module.exports = mongoose.model('Station', stationSchema);
+module.exports = mongoose.model('Station', stationSchema)
