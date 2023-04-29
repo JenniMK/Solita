@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 const Station = ({ station }) => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   if (!station) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   const toggleVisible = () => {
-    setVisible(!visible);
-  };
+    setVisible(!visible)
+  }
 
   return (
-    <div className="station">
+    <div className='station'>
       <h3 onClick={toggleVisible}>{station.Nimi}</h3>
       {visible && (
         <div>
@@ -22,7 +22,7 @@ const Station = ({ station }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Station;
+export default Station

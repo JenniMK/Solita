@@ -6,9 +6,9 @@ This application was created using create-react-app.
 
 <h2>To start:</h2>
 
-Clone the repository and save the .env-file that was provided separately to the root of backend directory. Install all dependencies by running node index.js.
+Clone the repository and save the .env-files which were provided separately to the /backend and /src directories. Install all dependencies by running npm install. Run the backend with node index.js.
 
-In frontend also install first dependencies by running npm install. Then run npm start in root.
+For the frontend also install dependencies by running npm install. Then run npm start in root.
 
 <h2>Content of directories:</h2>
 
@@ -16,7 +16,9 @@ Backend has two model files that create schemas for MongoDB database. Data direc
 
 There is also two controller files to handle API-endpoints. 
 
-In frontend I have two service files to fetch data from API-endopoints. 
+Backend's test directory API-tests are meant to do before database has any data. Therefore those have been commented out, so running npm test will only test the rest of functionalities and avoid replacing the data. 
+
+In frontend I have two service files to fetch data from API-endpoints. 
 
 <h2>Application's functionalities</h2>
 
@@ -26,13 +28,13 @@ Below stations' data is paginated data of journeys. It has also been divided 15 
 
 <h2>Further developments</h2>
 
-To apply more functionalities, I would widen the data that is calculated and fetched from stations and journeys, for example average distance and duration from each station. Journeys' data could have possibilities to sort distance and duration to ascending descending order. Also names could be sorted in alphabetical order. These would serve the service provider.
+To apply more functionalities, I would add more calculations, for example average distance and duration from each station. Journeys' data could have possibilities to sort distance and duration to ascending and descending order. Also names could be sorted in alphabetical order. These would serve the service provider.
 
 The map could show all the stations and use current location to show the closest station. This could be displayed below the map. This would be useful for the service user instead.
 
 Since the provided data is in finnish and swedish, a flag icons could be added to the top of page and it could have option to choose languege. 
 
-<h2>Last words</h2>Overall, this is a very good assignment and has variety of options how to use the data. I will personally develop it further by adding more calculated data and trying to re-do it also with SQL. 
+<h2>Last words</h2>Overall, this is a very good assignment and has variety of options how to use the data. I will personally develop it further by adding more calculated data and trying to re-do it with SQL. 
 
 
 
