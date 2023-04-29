@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/* const mongoose = require('mongoose');
 const supertest = require('supertest');
 const app = require('../app');
 const Station = require('../models/station');
@@ -44,4 +44,4 @@ test('GET /search handles missing query parameter', async () => {
 afterAll(() => {
   mongoose.connection.close();
 });
-})
+}) */

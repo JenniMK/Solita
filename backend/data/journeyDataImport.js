@@ -3,7 +3,7 @@ const Journey = require('../models/journey');
 const connectDatabase = require('../database');
 const mongoose = require('mongoose');
 
-const fileNames = ['/2021-05.csv', '/2021-06.csv', '/2021-07.csv'];
+const fileNames = ['./2021-05.csv', './2021-06.csv', './2021-07.csv'];
 
 async function importData() {
   try {
@@ -33,4 +33,3 @@ async function importData() {
 }
 
 importData();
-

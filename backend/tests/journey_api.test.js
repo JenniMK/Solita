@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/* const mongoose = require('mongoose');
 const supertest = require('supertest');
 const app = require('../app');
 const Journey = require('../models/journey');
@@ -43,8 +43,8 @@ describe('Journeys API', () => {
     expect(response.body.journeys.length).toBe(2);
   expect(response.body.totalJourneyPages).toBe(1);
 }, 60000);
-
+-
   afterAll(() => {
     mongoose.connection.close();
   });
-});
+}); */

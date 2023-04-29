@@ -5,7 +5,7 @@ require('dotenv').config();
 console.log('Loading database configuration');
 console.log(`MONGODB_URI: ${process.env.MONGODB_URI}`);
 
-const url = process.env.MONGODB_URI;
+const url = process.env.MONGODB_URI
 
 const connectDatabase = async () => {
   console.log('connecting to', url);
@@ -14,7 +14,6 @@ const connectDatabase = async () => {
     await mongoose.connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true
     });
     console.log('connected to MongoDB');
   } catch (error) {
