@@ -1,40 +1,40 @@
 <h1>Citybikes application</h1>
 
-<h2>Link to the production version:</h2>
+This application was created using create-react-app with a backend built using Node.js.
 
-This application was created using create-react-app.
+<h2>Getting started:</h2>
 
-<h2>To start:</h2>
+To use the application, clone the repository and save the separately provided .env files to both the /backend and /src directories.
 
-Clone the repository and save the .env-files which were provided separately to the /backend and /src directories. Install all dependencies by running npm install. Run the backend with node index.js.
+To start the backend, navigate to the /backend directory and install all dependencies using npm install. You can then start the server with npm start.
 
-For the frontend also install dependencies by running npm install. Then run npm start in root.
+For the frontend, navigate to the root directory of the project and install dependencies using npm install. You can then start the application with npm start.
 
-<h2>Content of directories:</h2>
+<h2>Directory contents:</h2>
 
-Backend has two model files that create schemas for MongoDB database. Data directory has two import files for both schemas and additional update file that was used to add more data to database. Connection is created by using database.js file. Note that due to limit of space in MongoDB Atlas, imported lines of journey data has been limited to 500,000 per file. 
+The backend includes two model files that create schemas for a MongoDB database. The /data directory includes two import files for both schemas, as well as an additional update file used to add more data to the database. The connection is created using the database.js file. Note that due to space limitations in MongoDB Atlas, the imported journey data has been limited to 500,000 lines per file.
 
-There is also two controller files to handle API-endpoints. 
+There are also two controller files to handle API endpoints. The API tests in the backend's /test directory are meant to be run before the database has any data. Therefore, these have been commented out so that running npm test will only test the other functionalities and avoid replacing the data.
 
-Backend's test directory API-tests are meant to do before database has any data. Therefore those have been commented out, so running npm test will only test the rest of functionalities and avoid replacing the data. 
+In the frontend, there are two service files used to fetch data from the API endpoints. Tests are located in the /components directory.
 
-In frontend I have two service files to fetch data from API-endpoints. 
+Styling of components has been combined to one main css-file in /styles directory.
 
-<h2>Application's functionalities</h2>
+<h2>Application functionality</h2>
 
-In browser stations' data has been paginated to display 15 lines per page. Map on the right side shows the locations of currently displayed stations. User can click the name of the station to view station's address and amounts of total journeys. 
-In search box usesr can start typing the name of the station they want to find and it offers suitable names. By clicking the name, station's data will be displayed. Also pin on the map shows the location. Back button returns to the previous page.
-Below stations' data is paginated data of journeys. It has also been divided 15 lines per page. 
+The application displays station data in a paginated format, showing 15 lines per page. A map on the right side shows the locations of currently displayed stations. Clicking on the name of a station shows the station's address and the total number of journeys. In the search box, users can start typing the name of the station they want to find and the application will offer suitable options. Clicking on the name of a station displays its data, and a pin on the map shows its location. The back button returns users to the previous list view.
+
+Below the stations' data is paginated journey data, also divided into 15 lines per page.
 
 <h2>Further developments</h2>
 
-To apply more functionalities, I would add more calculations, for example average distance and duration from each station. Journeys' data could have possibilities to sort distance and duration to ascending and descending order. Also names could be sorted in alphabetical order. These would serve the service provider.
+To add more functionalities to the application, I would include more calculations, such as the average distance and duration from each station. Journeys' data could be sortable by distance and duration in ascending and descending order. Stations' names could be sorted in alphabetical order. These functionalities would serve the service provider.
 
-The map could show all the stations and use current location to show the closest station. This could be displayed below the map. This would be useful for the service user instead.
+For the service user, the map could show all the stations and use the user's current location to show the closest station, or users could search for the closest station near a chosen address. There could also be input fields for the start and end stations, and the distance and average cycling time could be displayed. Since the provided data is in different languages, flag icons could be added to the top of the page to allow users to choose their preferred language.
 
-Since the provided data is in finnish and swedish, a flag icons could be added to the top of page and it could have option to choose languege. 
+<h2>Conclusion</h2>
 
-<h2>Last words</h2>Overall, this is a very good assignment and has variety of options how to use the data. I will personally develop it further by adding more calculated data and trying to re-do it with SQL. 
+Overall, this was a great assignment, and I plan to develop it further. I will refactor the React code to a more advanced level and create more calculated data for all users. I will also redo the database using SQL.
 
 
 
